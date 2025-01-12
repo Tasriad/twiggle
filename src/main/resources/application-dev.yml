@@ -1,6 +1,9 @@
 spring:
   application:
     name: twiggle
+  data:
+    mongodb:
+      uri: mongodb+srv://mongodbadmin:sol@acedbadm!n@backend-cluster.qcxwk.mongodb.net/myDatabase?retryWrites=true&w=majority
 server:
   port: 8080
 management:
