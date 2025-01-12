@@ -3,7 +3,7 @@ spring:
     name: twiggle
   data:
     mongodb:
-      uri: mongodb+srv://mongodbadmin:sol@acedbadm!n@backend-cluster.qcxwk.mongodb.net/myDatabase?retryWrites=true&w=majority
+      uri: mongodb+srv://mongodbadmin:sol%40acedbadm%21n@backend-cluster.qxcwk.mongodb.net/myDatabase?retryWrites=true&w=majority&ssl=true
 server:
   port: 8080
 management:
