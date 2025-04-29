@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 import dev.solace.twiggle.dto.WeatherDTO;
 import dev.solace.twiggle.exception.CustomException;
 import dev.solace.twiggle.service.impl.WeatherServiceImpl;
-import dev.solace.twiggle.service.impl.WorldWeatherOnlineApiClient;
+import dev.solace.twiggle.service.impl.weather.WorldWeatherOnlineApiClient;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

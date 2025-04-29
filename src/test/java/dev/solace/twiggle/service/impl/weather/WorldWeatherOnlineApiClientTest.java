@@ -1,4 +1,4 @@
-package dev.solace.twiggle.service.impl;
+package dev.solace.twiggle.service.impl.weather;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;

@@ -1,4 +1,4 @@
-package dev.solace.twiggle.service.impl;
+package dev.solace.twiggle.service.impl.weather;
 
 import dev.solace.twiggle.config.WeatherApiConfig;
 import dev.solace.twiggle.exception.CustomException;
@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -21,11 +21,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 /**
  * Client for making requests to the World Weather Online API.
+ * Implements the WeatherApiClient interface.
  */
-@Service
+@Component
 @RequiredArgsConstructor
 @Slf4j
-public class WorldWeatherOnlineApiClient {
+public class WorldWeatherOnlineApiClient implements WeatherApiClient {
 
     private static final String FORMAT_PARAM = "format";
     private static final String FORMAT_JSON = "json";
@@ -46,6 +47,7 @@ public class WorldWeatherOnlineApiClient {
      * @param location The location to get weather for
      * @return The JSON response from the API
      */
+    @Override
     public String getCurrentWeather(String location) {
         Map<String, String> queryParams = new HashMap<>();
         // Validate location input to prevent injection
@@ -68,6 +70,7 @@ public class WorldWeatherOnlineApiClient {
      * @param longitude The longitude in decimal degrees
      * @return The JSON response from the API
      */
+    @Override
     public String getCurrentWeatherByCoordinates(double latitude, double longitude) {
         Map<String, String> queryParams = new HashMap<>();
         queryParams.put("q", formatCoordinates(latitude, longitude));
@@ -88,6 +91,7 @@ public class WorldWeatherOnlineApiClient {
      * @param days     Number of days for the forecast (1-14)
      * @return The JSON response from the API
      */
+    @Override
     public String getWeatherForecast(String location, int days) {
         if (days < 1 || days > 14) {
             log.warn("Invalid days parameter: {}. Using default value of 3", days);
@@ -117,6 +121,7 @@ public class WorldWeatherOnlineApiClient {
      * @param days      Number of days for the forecast (1-14)
      * @return The JSON response from the API
      */
+    @Override
     public String getWeatherForecastByCoordinates(double latitude, double longitude, int days) {
         if (days < 1 || days > 14) {
             log.warn("Invalid days parameter: {}. Using default value of 3", days);

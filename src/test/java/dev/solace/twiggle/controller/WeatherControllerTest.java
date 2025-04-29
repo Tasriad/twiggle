@@ -17,6 +17,7 @@ import dev.solace.twiggle.exception.CustomException;
 import dev.solace.twiggle.exception.ErrorCode;
 import dev.solace.twiggle.service.WeatherService;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -57,6 +58,7 @@ class WeatherControllerTest {
         // Reset the mock to clear any previous interactions
         reset(weatherService);
 
+        // Create a fully populated WeatherDTO with all required fields
         mockWeatherDTO = WeatherDTO.builder()
                 .location("San Francisco")
                 .timestamp(LocalDateTime.now())
@@ -67,6 +69,28 @@ class WeatherControllerTest {
                 .windSpeedUnit("km/h")
                 .windDirection("NW")
                 .cloudCover(30)
+                .cloudType("Cumulus")
+                .precipitation(0.0)
+                .precipitationType("None")
+                .pressure(1013.0)
+                .pressureUnit("hPa")
+                .visibility(10.0)
+                .visibilityType("Good")
+                .uvIndex(4.0)
+                .isDay(true)
+                .pm25(10.0)
+                .pm10(15.0)
+                .ozone(30.0)
+                .no2(20.0)
+                .airQualityIndex("Good")
+                .overallHazardLevel("None")
+                .condition("Clear")
+                .hour("12:00")
+                .airHazards(new ArrayList<>())
+                .plantHazards(new ArrayList<>())
+                .gardeningAdvice("Weather conditions are favorable for gardening activities.")
+                .forecast(new ArrayList<>())
+                .alerts(new ArrayList<>())
                 .build();
     }
 
